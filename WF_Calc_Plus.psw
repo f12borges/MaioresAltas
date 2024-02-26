@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformation>
+    <info>
+    <name>WF_Calc_Plus</name>
+    <description/>
+    <extended_description/>
+    <trans_version/>
+    <trans_type>Normal</trans_type>
+    <created_user>fernando.borges</created_user>
+    <created_date>2024&#x2f;02&#x2f;19 16&#x3a;13&#x3a;29.435</created_date>
+    <modified_user>fernando.borges</modified_user>
+    <modified_date>2024&#x2f;02&#x2f;26 15&#x3a;37&#x3a;50.097</modified_date>
+    <fileHash>df0d3434343aa51bb630a25d328417a4</fileHash>
+    <stepEntryHash>7125275d85842a401e940b0c359d7172</stepEntryHash>
+
+    <directory>&#x2f;</directory>
+    <parameters>
+      <parameter>
+        <name>valor</name>
+        <description>Valor</description>
+        <type>String</type>
+        <uiControlType>TextBox</uiControlType>
+        <list_of_values/>
+        <valueSeparator/>
+        <default_value/>
+        <secret>N</secret>
+        <optional>N</optional>
+        <runtime>Y</runtime>
+      </parameter>
+    </parameters>
+    <parameterConfiguration>
+      <grouping>
+      </grouping>
+    </parameterConfiguration>
+    <ps_variables>
+    </ps_variables>
+    <logging_table>
+    </logging_table>
+    <size_rowset>10000</size_rowset>
+    <unique_connections>N</unique_connections>
+    <feedback_shown>Y</feedback_shown>
+    <feedback_size>50000</feedback_size>
+    <partitionschemas>
+    </partitionschemas>
+    <slaveservers>
+    </slaveservers>
+    <clusterschemas>
+    </clusterschemas>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA&#x3d;</key_for_session_key>
+    <is_key_private>N</is_key_private>
+  </info>
+  <order>
+    <hop>
+      <from>Set valor</from>
+      <to>plusButton click</to>
+      <enabled>Y</enabled>
+      <visible>Y</visible>
+    </hop>
+    <hop>
+      <from>Get valor</from>
+      <to>Set valor</to>
+      <enabled>Y</enabled>
+      <visible>Y</visible>
+    </hop>
+  </order>
+  <step>
+    <name>plusButton click</name>
+    <type>Windows-App-GUI-MouseAction</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+<actionType>CLICK</actionType>
+
+<horizontalScroll/>
+
+<verticalScroll/>
+
+<toggleState/>
+
+<sourceWindowPath>&#x2f;w&#x5b;Desktop&#x5d;&#x2f;w&#x5b;Calculadora&#x5d;&#x2f;w&#x5b;Calculadora&#x5d;&#x5b;1&#x5d;</sourceWindowPath>
+
+<sourceGroup>
+        <elementData>
+                <absolutePath>&#x2f;Custom&#x5b;0&#x5d;&#x2f;Group&#x5b;0&#x5d;&#x2f;Group&#x5b;3&#x5d;&#x2f;Button&#x5b;3&#x5d;</absolutePath>
+
+                <XPath>&#x2f;&#x2f;Button&#x5b;&#x40;AutomationId&#x3d;&#x22;plusButton&#x22;&#x5d;</XPath>
+
+                <automationId>plusButton</automationId>
+
+                <indexForAutomationId>0</indexForAutomationId>
+
+                <name>Mais</name>
+
+                <indexForName>0</indexForName>
+
+                <className>Button</className>
+
+                <indexForClassName>18</indexForClassName>
+
+                <controlType>ControlType.Button</controlType>
+
+                <indexForControlType>18</indexForControlType>
+
+                <acceleratorKey/>
+
+                <accessKey/>
+
+                <helpText/>
+
+                <localizedControlType>bot&#xe3;o</localizedControlType>
+
+                <processInfo/>
+
+                <supportedPatterns>InvokePatternIdentifiers.Pattern,ScrollItemPatternIdentifiers.Pattern</supportedPatterns>
+
+                <frameworkId>XAML</frameworkId>
+
+        </elementData>
+</sourceGroup>
+<sourceCriteria>AUTOMATION_ID</sourceCriteria>
+
+<sourceCriteriaValue>plusButton</sourceCriteriaValue>
+
+<sourceElementIndex>0</sourceElementIndex>
+
+      <timeout/>
+
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>224</xloc>
+      <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>Get valor</name>
+    <type>GetVariable</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>valor</name>
+        <variable>&#x24;&#x7b;valor&#x7d;</variable>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>64</xloc>
+      <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>Set valor</name>
+    <type>Windows-App-GUI-Write</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+      <setTextFields><field>        <elementData>
+        <absolutePath>&#x2f;Custom&#x5b;0&#x5d;&#x2f;Group&#x5b;0&#x5d;&#x2f;Text&#x5b;1&#x5d;</absolutePath>
+
+        <XPath>&#x2f;&#x2f;Text&#x5b;&#x40;AutomationI</XPath>
+
+        <automationId>CalculatorResults</automationId>
+
+        <indexForAutomationId>0</indexForAutomationId>
+
+        <name>A exibi&#xe7;&#xe3;o &#xe9; 0</name>
+
+        <indexForName>0</indexForName>
+
+        <className/>
+
+        <indexForClassName>2</indexForClassName>
+
+        <controlType>ControlType.Text</controlType>
+
+        <indexForControlType>3</indexForControlType>
+
+        <acceleratorKey/>
+
+        <accessKey/>
+
+        <helpText/>
+
+        <localizedControlType>texto</localizedControlType>
+
+        <processInfo/>
+
+        <supportedPatterns>InvokePatternIdentifiers.Pattern,ScrollItemPatternIdentifiers.Pattern</supportedPatterns>
+
+        <frameworkId>XAML</frameworkId>
+
+        </elementData>
+        <windowPath>&#x2f;w&#x5b;Desktop&#x5d;&#x2f;w&#x5b;Calculadora&#x5d;&#x2f;w&#x5b;Calculadora&#x5d;&#x5b;1&#x5d;</windowPath>
+
+        <criteria>AutomationId</criteria>
+
+        <criteriaValue>CalculatorResults</criteriaValue>
+
+        <elementIndex>0</elementIndex>
+
+        <actionType>Set New Text</actionType>
+        <Text>valor</Text>
+
+</field>      </setTextFields><timeout>5</timeout>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step_error_handling>
+  </step_error_handling>
+  <slave-step-copy-partition-distribution>
+  </slave-step-copy-partition-distribution>
+  <slave_workflow>N</slave_workflow>
+  <groups>
+  </groups>
+  <notepads>
+  </notepads>
+</transformation>
