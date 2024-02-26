@@ -9,9 +9,9 @@
     <created_user>fernando.borges</created_user>
     <created_date>2024&#x2f;02&#x2f;19 16&#x3a;19&#x3a;33.315</created_date>
     <modified_user>fernando.borges</modified_user>
-    <modified_date>2024&#x2f;02&#x2f;21 14&#x3a;56&#x3a;17.541</modified_date>
-    <fileHash>b0632f687246f04505e829b4fa5f39bd</fileHash>
-    <stepEntryHash>27eabfbbe748e777676ea28517cd6a6e</stepEntryHash>
+    <modified_date>2024&#x2f;02&#x2f;26 15&#x3a;55&#x3a;06.309</modified_date>
+    <fileHash>30cb35ac613401c86a4eef9c85828e1a</fileHash>
+    <stepEntryHash>0c4e5721b0cb907026f8187524b3f05e</stepEntryHash>
 
     <directory>&#x2f;</directory>
     <parameters>
@@ -39,20 +39,20 @@
   </info>
   <order>
     <hop>
-      <from>Microsoft Excel Input</from>
-      <to>Replace in string</to>
+      <from>Leitura Excel</from>
+      <to>Ajuste variacao</to>
       <enabled>Y</enabled>
       <visible>Y</visible>
     </hop>
     <hop>
       <from>Start</from>
-      <to>Launch Application</to>
+      <to>Abrir calculadora</to>
       <enabled>Y</enabled>
       <visible>Y</visible>
     </hop>
     <hop>
-      <from>Replace in string</from>
-      <to>Calc_Plus</to>
+      <from>Ajuste variacao</from>
+      <to>Calculadora</to>
       <enabled>Y</enabled>
       <visible>Y</visible>
     </hop>
@@ -64,7 +64,7 @@
     </hop>
     <hop>
       <from>Detect empty stream</from>
-      <to>Modified Java Script Value</to>
+      <to>Alerta</to>
       <enabled>Y</enabled>
       <visible>Y</visible>
     </hop>
@@ -76,35 +76,171 @@
     </hop>
     <hop>
       <from>Blocking Step</from>
-      <to>Get Resultado</to>
+      <to>Get ResultadoSoma</to>
       <enabled>Y</enabled>
       <visible>Y</visible>
     </hop>
     <hop>
-      <from>Get Resultado</from>
-      <to>Close Application</to>
+      <from>Get ResultadoSoma</from>
+      <to>Fechar calculadora</to>
       <enabled>Y</enabled>
       <visible>Y</visible>
     </hop>
     <hop>
-      <from>Calc_Plus</from>
+      <from>Calculadora</from>
       <to>Dummy &#x28;do nothing&#x29;</to>
       <enabled>Y</enabled>
       <visible>Y</visible>
     </hop>
     <hop>
-      <from>Close Application</from>
-      <to>Replace in string 2</to>
+      <from>Fechar calculadora</from>
+      <to>Ajuste ResultadoSoma</to>
       <enabled>Y</enabled>
       <visible>Y</visible>
     </hop>
     <hop>
-      <from>Replace in string 2</from>
-      <to>Set Workflow Result</to>
+      <from>Ajuste ResultadoSoma</from>
+      <to>Set Mensagem</to>
       <enabled>Y</enabled>
       <visible>Y</visible>
     </hop>
   </order>
+  <step>
+    <name>Abrir calculadora</name>
+    <type>Windows-App-GUI-LaunchApplication</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+        <path>C&#x3a;&#x5c;Windows&#x5c;System32&#x5c;calc.exe</path>
+        <failIfErrorOccurs>N</failIfErrorOccurs>
+        <windowPath/>
+        <windowLoadTimeout/>
+        <closeAppOnFailure>N</closeAppOnFailure>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>160</xloc>
+      <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>Ajuste ResultadoSoma</name>
+    <type>ReplaceString</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>ResultadoSoma</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>A exibi&#xe7;&#xe3;o &#xe9;</replace_string>
+        <replace_by_string/>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+    </fields>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>896</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>Ajuste variacao</name>
+    <type>ReplaceString</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>variacao</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>&#x2b;</replace_string>
+        <replace_by_string/>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+      </field>
+    </fields>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>192</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>Alerta</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>&#x2f;&#x2f;Script here&#xd;&#xa;&#xd;&#xa;Alert &#x28;&#x22;N&#xe3;o h&#xe1; pend&#xea;ncias&#x22;&#x29;</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>    </fields>    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>544</xloc>
+      <yloc>224</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
   <step>
     <name>Blocking Step</name>
     <type>BlockingStep</type>
@@ -136,7 +272,7 @@
     </step>
 
   <step>
-    <name>Calc_Plus</name>
+    <name>Calculadora</name>
     <type>WorkflowExecutor</type>
     <description/>
     <distribute>Y</distribute>
@@ -149,7 +285,7 @@
     <specification_method>filename</specification_method>
     <trans_object_id/>
     <trans_name/>
-    <filename>&#x24;&#x7b;Internal.Entry.Current.Directory&#x7d;&#x2f;WF_Calc_Plus.psw</filename>
+    <filename>&#x24;&#x7b;Internal.Entry.Current.Directory&#x7d;&#x2f;WF_Calculadora.psw</filename>
     <directory_path/>
     <group_size>1</group_size>
     <group_field/>
@@ -195,69 +331,6 @@
     </remotesteps>
     <GUI>
       <xloc>288</xloc>
-      <yloc>128</yloc>
-      <draw>Y</draw>
-    </GUI>
-    </step>
-
-  <step>
-    <name>Close Application</name>
-    <type>Windows-App-GUI-WindowAction</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-        <actionType>CLOSE</actionType>
-        <windowPath>&#x2f;w&#x5b;Desktop&#x5d;&#x2f;w&#x5b;Calculadora&#x5d;</windowPath>
-        <elementData>        <absolutePath/>
-
-        <XPath/>
-
-        <automationId/>
-
-        <indexForAutomationId/>
-
-        <name>Calculadora</name>
-
-        <indexForName/>
-
-        <className>ApplicationFrameWindow</className>
-
-        <indexForClassName/>
-
-        <controlType>ControlType.Window</controlType>
-
-        <indexForControlType/>
-
-        <acceleratorKey/>
-
-        <accessKey/>
-
-        <helpText/>
-
-        <localizedControlType>janela</localizedControlType>
-
-        <processInfo/>
-
-        <supportedPatterns>WindowPatternIdentifiers.Pattern,TransformPatternIdentifiers.Pattern,LegacyIAccessiblePatternIdentifiers.Pattern</supportedPatterns>
-
-        <frameworkId>Win32</frameworkId>
-
-        </elementData>        <timeout/>
-
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>720</xloc>
       <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
@@ -314,7 +387,70 @@
     </step>
 
   <step>
-    <name>Get Resultado</name>
+    <name>Fechar calculadora</name>
+    <type>Windows-App-GUI-WindowAction</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+        <actionType>CLOSE</actionType>
+        <windowPath>&#x2f;w&#x5b;Desktop&#x5d;&#x2f;w&#x5b;Calculadora&#x5d;</windowPath>
+        <elementData>        <absolutePath/>
+
+        <XPath/>
+
+        <automationId/>
+
+        <indexForAutomationId/>
+
+        <name>Calculadora</name>
+
+        <indexForName/>
+
+        <className>ApplicationFrameWindow</className>
+
+        <indexForClassName/>
+
+        <controlType>ControlType.Window</controlType>
+
+        <indexForControlType/>
+
+        <acceleratorKey/>
+
+        <accessKey/>
+
+        <helpText/>
+
+        <localizedControlType>janela</localizedControlType>
+
+        <processInfo/>
+
+        <supportedPatterns>WindowPatternIdentifiers.Pattern,TransformPatternIdentifiers.Pattern,LegacyIAccessiblePatternIdentifiers.Pattern</supportedPatterns>
+
+        <frameworkId>Win32</frameworkId>
+
+        </elementData>        <timeout/>
+
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>768</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>Get ResultadoSoma</name>
     <type>Windows-App-GUI-Read</type>
     <description/>
     <distribute>Y</distribute>
@@ -380,44 +516,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>608</xloc>
+      <xloc>640</xloc>
       <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
 
   <step>
-    <name>Launch Application</name>
-    <type>Windows-App-GUI-LaunchApplication</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-        <path>C&#x3a;&#x5c;Windows&#x5c;System32&#x5c;calc.exe</path>
-        <failIfErrorOccurs>N</failIfErrorOccurs>
-        <windowPath/>
-        <windowLoadTimeout/>
-        <closeAppOnFailure>N</closeAppOnFailure>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>160</xloc>
-      <yloc>48</yloc>
-      <draw>Y</draw>
-    </GUI>
-    </step>
-
-  <step>
-    <name>Microsoft Excel Input</name>
+    <name>Leitura Excel</name>
     <type>ExcelInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -537,113 +643,7 @@
     </step>
 
   <step>
-    <name>Modified Java Script Value</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#x2f;&#x2f;Script here&#xd;&#xa;&#xd;&#xa;Alert &#x28;&#x22;N&#xe3;o h&#xe1; pend&#xea;ncias&#x22;&#x29;</jsScript_script>
-      </jsScript>    </jsScripts>    <fields>    </fields>    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>544</xloc>
-      <yloc>224</yloc>
-      <draw>Y</draw>
-    </GUI>
-    </step>
-
-  <step>
-    <name>Replace in string</name>
-    <type>ReplaceString</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>variacao</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>&#x2b;</replace_string>
-        <replace_by_string/>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-      </field>
-    </fields>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>192</xloc>
-      <yloc>128</yloc>
-      <draw>Y</draw>
-    </GUI>
-    </step>
-
-  <step>
-    <name>Replace in string 2</name>
-    <type>ReplaceString</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>ResultadoSoma</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>A exibi&#xe7;&#xe3;o &#xe9;</replace_string>
-        <replace_by_string/>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-      </field>
-    </fields>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>848</xloc>
-      <yloc>128</yloc>
-      <draw>Y</draw>
-    </GUI>
-    </step>
-
-  <step>
-    <name>Set Workflow Result</name>
+    <name>Set Mensagem</name>
     <type>SetWorkflowResult</type>
     <description/>
     <distribute>Y</distribute>
@@ -678,7 +678,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>976</xloc>
+      <xloc>1024</xloc>
       <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
